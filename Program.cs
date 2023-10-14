@@ -29,24 +29,56 @@
 // M = 4; N = 8. -> 30
 
 
-        Console.Write("Введите значение M: ");
-        int M = int.Parse(Console.ReadLine());
+    //     Console.Write("Введите значение M: ");
+    //     int M = int.Parse(Console.ReadLine());
 
-        Console.Write("Введите значение N: ");
-        int N = int.Parse(Console.ReadLine());
+    //     Console.Write("Введите значение N: ");
+    //     int N = int.Parse(Console.ReadLine());
 
-        int sum = SumNaturalNumbers(M, N);
+    //     int sum = SumNaturalNumbers(M, N);
 
-        Console.WriteLine($"Сумма натуральных чисел в промежутке от {M} до {N} равна: {sum}");
+    //     Console.WriteLine($"Сумма натуральных чисел в промежутке от {M} до {N} равна: {sum}");
     
 
-    static int SumNaturalNumbers(int m, int n)
+    // static int SumNaturalNumbers(int m, int n)
+    // {
+    //     if (m > n)
+    //     {
+    //         return 0; // базовый случай: сумма натуральных чисел в пустом промежутке равна 0
+    //     }
+
+    //     return m + SumNaturalNumbers(m + 1, n);
+    // }
+
+// Задача 68: Напишите программу вычисления функции Аккермана 
+// с помощью рекурсии. Даны два неотрицательных числа m и n.
+// m = 2, n = 3 -> A(m,n) = 9
+// m = 3, n = 2 -> A(m,n) = 29
+
+
+        Console.Write("Введите значение m: ");
+        int m = int.Parse(Console.ReadLine());
+
+        Console.Write("Введите значение n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int result = AckermannFunction(m, n);
+
+        Console.WriteLine($"A({m}, {n}) = {result}");
+    
+
+    static int AckermannFunction(int m, int n)
     {
-        if (m > n)
+        if (m == 0)
         {
-            return 0; // базовый случай: сумма натуральных чисел в пустом промежутке равна 0
+            return n + 1;
         }
-
-        return m + SumNaturalNumbers(m + 1, n);
+        else if (n == 0)
+        {
+            return AckermannFunction(m - 1, 1);
+        }
+        else
+        {
+            return AckermannFunction(m - 1, AckermannFunction(m, n - 1));
+        }
     }
-
