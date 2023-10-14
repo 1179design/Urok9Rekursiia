@@ -6,18 +6,47 @@
 
 
     
+    //     Console.Write("Введите значение N: ");
+    //     int N = int.Parse(Console.ReadLine());
+
+    //     Console.WriteLine("Результат: " + PrintNumbers(N));
+    
+
+    // static string PrintNumbers(int n)
+    // {
+    //     if (n == 1)
+    //     {
+    //         return "1";
+    //     }
+
+    //     return n + ", " + PrintNumbers(n - 1);
+    // }
+
+    
+// Задача 66: Задайте значения M и N. Напишите программу, 
+// которая найдёт сумму натуральных элементов в промежутке от M до N.
+// M = 1; N = 15 -> 120
+// M = 4; N = 8. -> 30
+
+
+        Console.Write("Введите значение M: ");
+        int M = int.Parse(Console.ReadLine());
+
         Console.Write("Введите значение N: ");
         int N = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Результат: " + PrintNumbers(N));
+        int sum = SumNaturalNumbers(M, N);
+
+        Console.WriteLine($"Сумма натуральных чисел в промежутке от {M} до {N} равна: {sum}");
     
 
-    static string PrintNumbers(int n)
+    static int SumNaturalNumbers(int m, int n)
     {
-        if (n == 1)
+        if (m > n)
         {
-            return "1";
+            return 0; // базовый случай: сумма натуральных чисел в пустом промежутке равна 0
         }
 
-        return n + ", " + PrintNumbers(n - 1);
+        return m + SumNaturalNumbers(m + 1, n);
     }
+
